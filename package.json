@@ -1,0 +1,25 @@
+{
+  "name": "database-flow",
+  "version": "1.1.0",
+  "description": "Fast access database implementation: redis and postgres",
+  "license": "MIT",
+  "repository": "lefcott19/database-flow",
+  "main": "index.js",
+  "keywords": [
+    "fast database",
+    "flow",
+    "database flow",
+    "performant",
+    "redis",
+    "sequelize",
+    "postgres"
+  ],
+  "author": "Leandro Cotti",
+  "bugs": {
+    "url": "https://github.com/lefcott19/database-flow/issues"
+  },
+  "homepage": "https://github.com/lefcott19/database-flow",
+  "dependencies": {
+    "rollbar-grouping": "^1.5.3"
+  }
+}
