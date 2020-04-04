@@ -46,7 +46,7 @@ const example = async () => {
     followers: 15000,
     famous: false
   });
-  await flow.update('user', { famouse: true }, { followers: { $gt: 10000 } });
+  await flow.update('user', { famous: true }, { followers: { $gt: 10000 } });
   const famousUsers = await flow.get('user', { famous: true }, ['name', 'email']);
   console.log(`These are the famous users:\nJSON.stringify(famousUsers, null, 2)`);
 };
