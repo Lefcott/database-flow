@@ -1,6 +1,6 @@
 {
   "name": "database-flow",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Fast access database implementation: redis and postgres",
   "license": "MIT",
   "repository": "lefcott19/database-flow",

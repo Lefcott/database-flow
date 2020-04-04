@@ -15,13 +15,6 @@ const getFlow = require('./flow');
  * @param {String} Config.redis.url - URL in format "redis://user:pass&#64;host:port".
  * @param {Boolean} [Config.redis.helloMessage=true] - true for showing a message when redis is connected.
  * @param {object} Config.sequelize - Sequelize configuration.
- * @param {String} Config.sequelize.url - URL in format "postgres://user:pass&#64;host:port/database". Not necessary when passing connection param.
- * @param {object} Config.sequelize.connection - Connection config. Not necessary when passing url param.
- * @param {String} Config.sequelize.connection.user - Database user
- * @param {String} Config.sequelize.connection.port - Database port
- * @param {String} Config.sequelize.connection.pass - Database pass
- * @param {String} Config.sequelize.connection.host - Database host
- * @param {String} Config.sequelize.connection.database - Database name
  */
 module.exports = Config => {
   const config = {
@@ -33,12 +26,7 @@ module.exports = Config => {
   };
   config.modelsDir = config.modelsDir || path.dirname(stack.getCaller().file);
   config.redis.helloMessage = config.redis.helloMessage !== false;
-  let databaseUrl = config.sequelize.url;
-  if (typeof databaseUrl !== 'string') {
-    const { user, pass, host, port, database } = config.sequelize.connection;
-    databaseUrl = `postgres://${user}:${pass}@${host}:${port}/${database}`;
-  }
-  const models = getModels(config.modelsDir, databaseUrl, config.logging);
+  const models = getModels(config.modelsDir, config.sequelize, config.logging);
   const redis = getRedis(config.redis.url, config.redis.helloMessage, models);
   return {
     ...getFlow(models, redis, config.logging),
