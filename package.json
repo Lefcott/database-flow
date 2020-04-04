@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/lefcott19/database-flow",
   "dependencies": {
-    "rollbar-grouping": "^1.5.3"
+    "@lefcott/filter-json": "^1.0.0",
+    "method-stack": "^1.0.1",
+    "rollbar-grouping": "^1.5.3",
+    "sequelize": "^5.21.6"
   }
 }

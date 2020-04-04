@@ -4,7 +4,7 @@ const path = require('path');
 
 const models = {};
 
-module.exports = (dirname = __dirname, url, rollbar) => {
+module.exports = (dirname, url, rollbar) => {
   const sequelize = new Sequelize(url);
 
   fs.readdirSync(dirname)
