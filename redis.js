@@ -259,6 +259,16 @@ module.exports = (url, helloMessage, models, rollbar) => {
               number = typeof number === 'string' ? oldMember[number] : number; // Parsing for cols
               members[k][field] = date.add(number, `${unit}s`);
             }
+            if (update[field].$sum) {
+              let { $sum: sum } = update[field];
+              sum = typeof sum === 'string' ? oldMember[sum] : sum;
+              members[k][field] += sum;
+            }
+            if (update[field].$subtract) {
+              let { $subtract: subtract } = update[field];
+              subtract = typeof subtract === 'string' ? oldMember[subtract] : subtract;
+              members[k][field] -= subtract;
+            }
             continue;
           }
           members[k][field] = update[field];

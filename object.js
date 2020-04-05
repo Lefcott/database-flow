@@ -60,6 +60,16 @@ const sequelizeUpdate = (Base = {}) => {
         number = typeof number === 'string' ? `"${number}"` : number; // Parsing for cols
         base[keys[k]] = sequelize.literal(`${date} + interval '1 ${unit}' * ${number}`);
       }
+      if (values.$sum) {
+        let { $sum: sum } = values;
+        sum = typeof sum === 'string' ? `"${sum}"` : sum;
+        base[keys[k]] = sequelize.literal(`"${keys[k]}" + ${sum}`);
+      }
+      if (values.$subtract) {
+        let { $subtract: subtract } = values;
+        subtract = typeof subtract === 'string' ? `"${subtract}"` : subtract;
+        base[keys[k]] = sequelize.literal(`"${keys[k]}" - ${subtract}`);
+      }
       continue;
     }
     base[keys[k]] = Base[keys[k]];

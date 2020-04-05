@@ -80,7 +80,7 @@ module.exports = (models, redis, rollbar) => {
   /**
    * Updates registers on redis and postgres.
    * @param {String} model - The name of the model you want to update
-   * @param {object<String, Number>} update - An object where each key represents the field to be updated
+   * @param {object<String, any>} update - An object where each key represents the field to be updated
    * @param {Object.<string, FlowValueFilter>} where - A searching object where each key represents a field.
    * @return {Promise<FlowUpdateReturn>} Promise.
    */

@@ -27,7 +27,7 @@ module.exports = Config => {
   config.modelsDir = config.modelsDir || path.dirname(stack.getCaller().file);
   config.redis.helloMessage = config.redis.helloMessage !== false;
   const models = getModels(config.modelsDir, config.sequelize, config.logging);
-  const redis = getRedis(config.redis.url, config.redis.helloMessage, models);
+  const redis = getRedis(config.redis.url, config.redis.helloMessage, models, config.logging);
   return {
     ...getFlow(models, redis, config.logging),
     models,
